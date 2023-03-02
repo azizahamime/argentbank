@@ -5,6 +5,7 @@ import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import Error from "./pages/error/Error";
 import Home from "./pages/home/Home";
+import Login from './pages/login/Login';
 
 function App() {
   return (
@@ -13,6 +14,9 @@ function App() {
       <Switch>
         <Route exact path="/">
           <Home />
+        </Route>
+        <Route path="/login">
+          <Login />
         </Route>
         <Route>
           <Error />
