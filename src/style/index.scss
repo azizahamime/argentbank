@@ -55,7 +55,9 @@ body {
   text-decoration: none;
   margin-right: 0.5rem;
 }
-
+.nav-signin-icon {
+  margin-right: 10px;
+}
 .main-nav-item:hover {
   text-decoration: underline;
 }
@@ -206,6 +208,7 @@ body {
   display: flex;
   justify-content: center;
   border-top: 2px solid #ccc;
+  border-bottom: 2px solid #ccc;
   padding: 2rem 0 1.5rem;
 }
 
@@ -287,6 +290,23 @@ body {
 
   .transaction-button {
     width: 200px;
+  }
+}
+
+.error {
+  div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    h2 {
+      color: red;
+      font-size: 64px;
+    }
+    p {
+      font-size: 24px;
+    }
   }
 }
 .login-main {
