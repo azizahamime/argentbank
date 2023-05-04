@@ -41,6 +41,16 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 5px 20px;
+  .userInfos {
+    img {
+      width: 50px;
+      height: 50px;
+    }
+  }
+
+  button {
+    background-color: none !important;
+  }
 }
 
 .main-nav a {
@@ -312,4 +322,13 @@ body {
 }
 .login-main {
   padding: 50px 0 !important;
+}
+.userInfos {
+  padding: 0 20px;
+}
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
 }

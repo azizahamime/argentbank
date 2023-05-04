@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch/*,useSelector */} from "react-redux";
 import { login } from "../../Redux/reducers/userReducer";
 import { useNavigate} from "react-router-dom";
-import Connection from "../../Redux/Api";
+import {Connection} from "../../Redux/Api";
 //import Profil from "../Profil/Profil";
 //import { selectToken } from "../../Redux/reducers/userReducer
 export default function Login() {

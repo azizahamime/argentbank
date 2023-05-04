@@ -17,6 +17,23 @@ const Connection = async (username, password) => {
   );
   return response.data.body.token;
 }
+const GetUser = async () => {
 
+  const response = await axios.post(
+    "http://localhost:3001/api/v1/user/profile",
+    {},
 
-export default Connection;
+    {
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("token"),
+        "Content-Type": "application/json;charset=utf-8",
+      },
+    },
+  ).then(res => res.data.body);
+
+  console.log(response)
+
+  return response;
+};
+
+export { Connection, GetUser };
