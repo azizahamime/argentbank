@@ -1,21 +1,22 @@
 import React from "react";
 import { GetUser } from "../../Redux/Api";
 
+import Welcome from "../../components/Welcome";
+
 export default function Profil() {
   async function user() {
     const getdata = await GetUser();
+    const firstName = getdata.firstName;
     console.log(getdata)
-    return getdata
+    return { firstName }
   }
   const data = user()
-  console.log(data)
+  const first = data.firstName
+  console.log(first)
 
   return (
     <main className="main bg-dark">
-      <div className="header">
-        <h1>Welcome back<br />Tony Jarvis!</h1>
-        <button className="edit-button">Edit Name</button>
-      </div>
+      <Welcome />
       <h2 className="sr-only">Accounts</h2>
       <section className="account">
         <div className="account-content-wrapper">

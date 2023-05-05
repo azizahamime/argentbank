@@ -1,36 +1,34 @@
 import React, { useState } from "react";
 import { useDispatch/*,useSelector */} from "react-redux";
+
 import { login } from "../../Redux/reducers/userReducer";
 import { useNavigate} from "react-router-dom";
 import {Connection} from "../../Redux/Api";
-//import Profil from "../Profil/Profil";
-//import { selectToken } from "../../Redux/reducers/userReducer
+import userIcon from "../../assets/user.svg"
+
+
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
   const dispatch = useDispatch();
- const navigate = useNavigate()
-  /*const token = useSelector(selectToken)
-  console.log(token)*/
+  const navigate = useNavigate()  
 
   const handledSubmit = (e) => {
     e.preventDefault()
-
     Connection(email, password)
-      .then((token) => {
-        localStorage.setItem("token", token);
-        dispatch(login(token));
-        console.log("success");
-        console.log(token);
-        navigate("/profil")
+    .then((token) => {
+      localStorage.setItem("token", token);
+      dispatch(login(token));
+      console.log("success");
+      console.log(token);
+      navigate("/profil")
 
         
-      })
-      .catch((error) => {
-
-        console.log("Erreur d'identification", error);
-      })
+    })
+    .catch((error) => {
+      console.log("Erreur d'identification", error);
+    })
       
 
   }
@@ -39,7 +37,7 @@ export default function Login() {
   return (
     <main className="main bg-dark login-main">
       <section className="sign-in-content" >
-        <i className="fa fa-user-circle sign-in-icon"></i>
+      <img src={userIcon} alt="user" className="sign-in-icon"/>
         <h1>Sign In</h1>
         <form onSubmit={(e) => handledSubmit(e)}>
           <div className="input-wrapper">
