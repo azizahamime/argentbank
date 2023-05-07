@@ -20,31 +20,13 @@ const Connection = async (username, password) => {
   );
   return response.data.body.token;
 }
-/*const GetUser = async () => {
 
-  const response = await axios.post(
-    "http://localhost:3001/api/v1/user/profile",
-    {},
 
-    {
-      headers: {
-        Authorization: "Bearer " + localStorage.getItem("token"),
-        "Content-Type": "application/json;charset=utf-8",
-      },
-    },
-  ).then(res => res.data.body);
-
-  console.log(response)
-
-  return response;
-};*/
 const GetUser = async () => {
-  //const [data, setData] = useState({});
+
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
   const dispatch = useDispatch();
-
-
   useEffect(() => {
     setIsLoading(true);
     axios
@@ -68,4 +50,21 @@ const GetUser = async () => {
   return { error, isLoading };
 };
 
-export { Connection, GetUser };
+const EditUserData = async (firstName, lastName) => {
+  const response = await axios.put(
+    "http://localhost:3001/api/v1/user/profile",
+    { firstName: firstName, lastName: lastName },
+
+    {
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("token"),
+        "Content-Type": "application/json;charset=utf-8",
+      },
+    },
+  );
+  return response.data.body;
+};
+
+
+
+export { Connection, GetUser, EditUserData };
