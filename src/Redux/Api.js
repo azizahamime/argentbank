@@ -51,6 +51,8 @@ const GetUser = async () => {
 };
 
 const EditUserData = async (firstName, lastName) => {
+
+
   const response = await axios.put(
     "http://localhost:3001/api/v1/user/profile",
     { firstName: firstName, lastName: lastName },

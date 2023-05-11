@@ -22,7 +22,7 @@ export default function Header() {
 
   const handelLogout =()=>{
     dispatch(logout(token))
-    navigate('/login')
+    navigate('/')
   }
 
   return (
