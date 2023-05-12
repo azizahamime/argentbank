@@ -5,6 +5,12 @@ html {
   text-align: center;
   color: #2c3e50;
 }
+#root {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 
 body {
   margin: 0;
@@ -41,15 +47,15 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 5px 20px;
-  .userInfos {
-    img {
-      width: 50px;
-      height: 50px;
-    }
+  .icon {
+    width: 30px;
+    height: 30px;
   }
 
   button {
-    background-color: none !important;
+    background: none !important;
+    border: none;
+    font-weight: bold;
   }
 }
 
@@ -66,9 +72,7 @@ body {
   text-decoration: none;
   margin-right: 0.5rem;
 }
-.nav-signin-icon {
-  margin-right: 10px;
-}
+
 .main-nav-item:hover {
   text-decoration: underline;
 }
@@ -139,6 +143,7 @@ body {
 .features {
   display: flex;
   flex-direction: column;
+  padding: 60px 10px;
 }
 
 @media (min-width: 920px) {
@@ -185,6 +190,10 @@ body {
   margin: 0 auto;
   margin-top: 3rem;
   padding: 2rem;
+  img {
+    width: 30px;
+    height: 30px;
+  }
 }
 
 .sign-in-icon {
@@ -213,13 +222,13 @@ body {
 .input-wrapper input {
   padding: 5px;
   font-size: 1.2rem;
+  border: 1px solid rgba(0, 0, 0, 0.3);
 }
 
 .footer {
   display: flex;
   justify-content: center;
   border-top: 2px solid #ccc;
-  border-bottom: 2px solid #ccc;
   padding: 2rem 0 1.5rem;
 }
 
@@ -322,6 +331,9 @@ body {
 }
 .login-main {
   padding: 50px 0 !important;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
 }
 .userInfos {
   padding: 0 20px;
@@ -330,5 +342,25 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 15px;
+  gap: 5px;
+}
+
+form {
+  .data {
+    margin: 20px 0;
+    input {
+      padding: 10px;
+      margin-right: 10px;
+      font-weight: bold;
+    }
+  }
+  .buttons {
+    margin: 20px 0;
+    button {
+      width: 100px;
+      padding: 10px;
+      margin-right: 10px !important;
+      font-weight: bold;
+    }
+  }
 }

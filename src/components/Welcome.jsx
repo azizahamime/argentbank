@@ -32,7 +32,7 @@ export default function Welcome () {
               <h1>
                 Welcome back<br />
                 <span>
-                  {user.firstName} {user.lastName}
+                  {user.firstName} {user.lastName} !
                 </span>
                 
               </h1>

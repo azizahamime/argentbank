@@ -40,19 +40,19 @@ export default function Header() {
             <span> chargement !!</span> 
           ):(
             <Link to="/profil" className="main-nav-item name flex">
-              <img src={userIcon} alt="user"/>
+              <img src={userIcon} alt="user" className="icon"/>
                 {user.firstName}
             </Link>
           )}
           <button onClick={handelLogout} className="main-nav-item logoutButton flex">
-            <img src={logOutIcon} alt="logout"/>
+            <img src={logOutIcon} alt="logout" className="icon"/>
             Sign Out
           </button>
         </div>
       ):(
         <div className="userInfos">
           <Link to='/login' className="main-nav-item flex" >
-            <img src={signInIcon} alt="logout" className="nav-signin-icon"/> 
+            <img src={userIcon} alt="login" className="nav-signin-icon icon"/> 
             Sign In
           </Link>        
         </div>
