@@ -16,13 +16,12 @@ export default function Header() {
   const user = useSelector(selectUser);
   const {error, isLoading}= GetUser();
   error && <span> il y a une erreur</span>;
-  console.log(token)  
   const dispatch =useDispatch()
   const navigate = useNavigate()
 
   const handelLogout =()=>{
     dispatch(logout(token))
-    navigate('/')
+    navigate('/login')
   }
 
   return (

@@ -9,6 +9,7 @@ import Home from "../pages/home/Home";
 import Login from '../pages/login/Login';
 import Profil from '../pages/Profil/Profil';
 import PrivateRoute from './PrivateRoutes';
+//import Layout from '../components/Layout';
 
 function App() {
   return (
@@ -17,13 +18,9 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/" element={
-          <PrivateRoute>
-            <Profil />
-          </PrivateRoute>
-        }
-        />
-        <Route path="/profil" element={<Profil />} />
+        <Route element={<PrivateRoute />}>
+          <Route path='/profil' element={<Profil />} />
+        </Route>
         <Route path="/*" element={<Error />} />
       </Routes>
       <Footer />
