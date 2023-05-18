@@ -13,6 +13,7 @@ export default function Login() {
   const [rememberMe, setRememberMe] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate()  
+  
 
   const handledSubmit = (e) => {
     e.preventDefault()
@@ -24,15 +25,21 @@ export default function Login() {
       navigate("/profil")        
     })
     .catch((error) => {
-      console.log("Erreur d'identification", error);
+      const form = document.querySelector(".sign-in-content");
+      const errorDiv = document.createElement("div");      
+      errorDiv.classList.add('error');     
+      form.prepend(errorDiv);
+      errorDiv.innerHTML = error.message;
+      
     })
   }
   
   return (
     <main className="main bg-dark login-main">
       <section className="sign-in-content" >
-      <img src={userIcon} alt="user" className="sign-in-icon"/>
-        <h1>Sign In</h1>
+        <img src={userIcon} alt="user" className="sign-in-icon"/>
+          <h1>Sign In</h1>
+        
         <form onSubmit={(e) => handledSubmit(e)}>
           <div className="input-wrapper">
             <label htmlFor="email">Email</label>
