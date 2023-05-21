@@ -12,11 +12,48 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
   const dispatch = useDispatch();
-  const navigate = useNavigate()  
+  const navigate = useNavigate()
+    
+  const fields = document.querySelectorAll('input[type= "email"], input[type ="password"]')
+  const errorFields = document.querySelectorAll('.error')
+  const errorDiv = document.createElement("div");   
+  errorDiv.classList.add('error');
   
+
+  function validateField(field){
+    if (field.checkValidity()){
+      return true;   
+    } else {
+      
+      let message = field.validationMessage;
+      let showMessage = document.createElement("div");
+      showMessage.textContent = message;
+      showMessage.classList.add("error");
+      field.parentNode.appendChild(showMessage);    
+      return false;
+      
+    }
+  }
+
+  function removeMsg(field){
+    let msg = document.querySelectorAll(".error");
+    msg.forEach((message) =>{
+      if(message.parentNode === field.parentNode){
+        field.parentNode.removeChild(message);
+      }
+    });
+  }
+  
+  fields.forEach((field) =>{
+    field.addEventListener('input',(e)=>{ removeMsg(field);validateField(field);});
+  });
 
   const handledSubmit = (e) => {
     e.preventDefault()
+    const form = document.querySelector(".sign-in-content");
+    console.log(errorFields)
+    errorFields.forEach(el=>el.parentElement === form ? el.remove():null) 
+
     Connection(email, password)
     .then((token) => {
       localStorage.setItem("token", token);
@@ -25,12 +62,10 @@ export default function Login() {
       navigate("/profil")        
     })
     .catch((error) => {
-      const form = document.querySelector(".sign-in-content");
-      const errorDiv = document.createElement("div");      
-      errorDiv.classList.add('error');     
-      form.prepend(errorDiv);
       errorDiv.innerHTML = error.message;
-      
+      console.log(form);
+      console.log(errorDiv)
+      form.prepend(errorDiv);
     })
   }
   
@@ -40,14 +75,15 @@ export default function Login() {
         <img src={userIcon} alt="user" className="sign-in-icon"/>
           <h1>Sign In</h1>
         
-        <form onSubmit={(e) => handledSubmit(e)}>
+        <form onSubmit={(e) => handledSubmit(e)} noValidate >
           <div className="input-wrapper">
             <label htmlFor="email">Email</label>
             <input
               type="email"
               id="email"
+              required
               defaultValue={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) =>  setEmail(e.target.value)}
             />
           </div>
           <div className="input-wrapper">
@@ -55,6 +91,8 @@ export default function Login() {
             <input
               type="password"
               id="password"
+              minLength={6}
+              required
               defaultValue={password}
               onChange={(e) => setPassword(e.target.value)}
             />
