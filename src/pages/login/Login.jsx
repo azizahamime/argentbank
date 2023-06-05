@@ -51,7 +51,6 @@ export default function Login() {
   const handledSubmit = (e) => {
     e.preventDefault()
     const form = document.querySelector(".sign-in-content");
-    console.log(errorFields)
     errorFields.forEach(el=>el.parentElement === form ? el.remove():null) 
 
     Connection(email, password)
@@ -63,8 +62,6 @@ export default function Login() {
     })
     .catch((error) => {
       errorDiv.innerHTML = error.message;
-      console.log(form);
-      console.log(errorDiv)
       form.prepend(errorDiv);
     })
   }

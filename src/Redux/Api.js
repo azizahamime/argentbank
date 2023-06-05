@@ -10,7 +10,6 @@ const Connection = async (username, password) => {
       email: username,
       password: password,
     },
-
     {
       headers: {
         Accept: "application/json",
@@ -23,7 +22,6 @@ const Connection = async (username, password) => {
 
 
 const GetUser = async () => {
-
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
   const dispatch = useDispatch();
@@ -44,19 +42,14 @@ const GetUser = async () => {
         setError(error);
       })
       .finally(() => setIsLoading(false));
-
   }, [dispatch]);
-
   return { error, isLoading };
 };
 
 const EditUserData = async (firstName, lastName) => {
-
-
   const response = await axios.put(
     "http://localhost:3001/api/v1/user/profile",
     { firstName: firstName, lastName: lastName },
-
     {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("token"),

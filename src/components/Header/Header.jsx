@@ -6,7 +6,7 @@ import argentBankLogo from "../../assets/argentBankLogo.png";
 import { selectToken, selectUser} from "../../Redux/reducers/userReducer";
 import userIcon from "../../assets/user.svg"
 import logOutIcon from "../../assets/sign-out.svg"
-import signInIcon from "../../assets/sign-in.svg"
+//import signInIcon from "../../assets/sign-in.svg"
 import { logout } from "../../Redux/reducers/userReducer";
 import { GetUser } from "../../Redux/Api";
 
